@@ -1,3 +1,37 @@
+import Image from "next/image";
+import Link from "next/link";
+
+export default function Nav() {
+  return (
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <Link href="/" className="flex items-center gap-3">
+          <div className="h-10 w-10 rounded-xl bg-white/90 p-1 ring-1 ring-white/15">
+            <Image
+              src="/genius_logo.png"
+              alt="GENIUS Lab"
+              width={40}
+              height={40}
+              className="h-full w-full object-contain"
+              priority
+            />
+          </div>
+
+          <div className="leading-tight">
+            <div className="text-sm font-semibold text-white">GENIUS Office</div>
+            <div className="text-xs text-white/70">Environmental AI Studio I</div>
+          </div>
+        </Link>
+
+        {/* keep your existing nav links here */}
+      </div>
+    </header>
+  );
+}
+
+
+
+
 import Link from "next/link";
 import Container from "./Container";
 import Badge from "./Badge";
