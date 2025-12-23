@@ -9,7 +9,7 @@ export function InstructorBlock() {
         width={72}
         height={72}
         unoptimized
-        className="h-[72px] w-[72px] rounded-2xl object-cover ring-2 ring-slate-300 shadow-sm"
+        className="h-[72px] w-[72px] rounded-2xl object-cover ring-1 ring-black/10"
         priority
       />
       <div>
