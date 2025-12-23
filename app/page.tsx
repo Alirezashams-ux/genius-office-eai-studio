@@ -1,31 +1,8 @@
-import Image from "next/image";
-
-export function InstructorBlock() {
-  return (
-    <div className="flex items-center gap-4">
-      <Image
-        src="/prof_kyung.jpg"
-        alt="Prof. Kyung"
-        width={72}
-        height={72}
-        className="h-18 w-18 rounded-2xl object-cover ring-1 ring-white/15"
-        priority
-      />
-      <div>
-        <div className="text-sm font-semibold text-white">Prof. Kyung (GENIUS Lab)</div>
-        <div className="text-xs text-white/70">Civil & Environmental Engineering · Ulsan University</div>
-      </div>
-    </div>
-  );
-}
-
-
-
-
 import Container from "@/components/Container";
 import SectionTitle from "@/components/SectionTitle";
 import { Card, CardBody, CardHeader } from "@/components/Card";
 import Badge from "@/components/Badge";
+import { InstructorBlock } from "@/components/InstructorBlock";
 import Link from "next/link";
 
 const rules = [
@@ -48,22 +25,28 @@ export default function HomePage() {
                 <Badge tone="amber">No exams</Badge>
                 <Badge tone="sky">Explainability-first</Badge>
               </div>
+
               <h1 className="mt-4 text-4xl font-black leading-tight">
-                GENIUS Office: <span className="text-white/90">Environmental AI Studio I</span>
+                GENIUS Office: Environmental AI Studio I
               </h1>
-              <p className="mt-3 text-white/80">
-                This is not a trendy ML course. It’s a virtual research studio where environmental data becomes
-                decision-ready evidence: <span className="font-semibold text-white">Dataset Cards</span>,{" "}
-                <span className="font-semibold text-white">Baseline Reports</span>,{" "}
-                <span className="font-semibold text-white">Explainability Packs</span>, and a{" "}
-                <span className="font-semibold text-white">poster</span>.
+
+              <p className="mt-4 text-lg text-white/80">
+                This is not a trendy ML course. It’s a virtual research studio where
+                environmental data becomes decision-ready evidence: <strong>Dataset Cards</strong>,
+                <strong>Baseline Reports</strong>, <strong>Explainability Packs</strong>, and a <strong>poster</strong>.
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/case-files" className="rounded-2xl bg-white px-5 py-3 text-sm font-bold text-navy no-underline">
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="#case-files"
+                  className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-navy hover:bg-slate-200"
+                >
                   Explore Case Files →
                 </Link>
-                <Link href="/studio" className="rounded-2xl bg-white/10 px-5 py-3 text-sm font-bold text-white no-underline ring-1 ring-white/20">
+                <Link
+                  href="#missions"
+                  className="rounded-lg border border-white/20 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10"
+                >
                   Weekly Studio Missions →
                 </Link>
               </div>
@@ -72,48 +55,64 @@ export default function HomePage() {
         </Container>
       </div>
 
-      <Container>
-        <div className="py-10">
+      <section className="bg-slate-50 py-16 text-ink" id="mission-control">
+        <Container>
           <SectionTitle
-            eyebrow="MISSION CONTROL"
+            subtitle="MISSION CONTROL"
             title="We train decision scientists — not model worshippers."
-            desc="Every project must pass baseline, leakage, stress, and explainability gates before it is considered successful."
           />
+          <p className="mt-2 text-lg text-ink/80 max-w-3xl">
+            Every project must pass baseline, leakage, stress, and explainability gates
+            before it is considered successful.
+          </p>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {/* Studio Rules */}
             <Card>
-              <CardHeader title="Studio Rules (non-negotiable)" subtitle="Your Trust Score depends on these." />
+              <CardHeader title="Studio Rules" subtitle="(non-negotiable)" />
               <CardBody>
-                <ul className="space-y-3">
-                  {rules.map((r) => (
-                    <li key={r.k} className="flex items-start gap-3">
-                      <Badge tone="muted">{r.k}</Badge>
-                      <div className="text-sm text-ink/80">{r.v}</div>
+                <p className="text-sm text-ink/70">
+                  Your Trust Score depends on these.
+                </p>
+                <ul className="mt-4 space-y-3 text-sm">
+                  {rules.map(({ k, v }) => (
+                    <li key={k}>
+                      <span className="font-semibold">{k}: </span>
+                      {v}
                     </li>
                   ))}
                 </ul>
               </CardBody>
             </Card>
 
+            {/* Instructor */}
             <Card>
               <CardHeader title="Instructor" subtitle="Course leadership" />
               <CardBody>
-                <div className="text-sm">
-                  <div className="font-bold">Prof. Kyung (GENIUS Lab)</div>
-                  <div className="mt-1 text-ink/70">
-                    Civil & Environmental Engineering · Ulsan University
-                  </div>
-                  <div className="mt-4 rounded-xl bg-muted p-4 text-ink/80">
-                    <div className="font-semibold">What makes this course different?</div>
-                    <ul className="mt-2 list-disc pl-5 space-y-1">
+                <div className="space-y-4 text-sm">
+                  <InstructorBlock />
+
+                  <div className="rounded-xl bg-muted p-4 text-ink/80">
+                    <div className="font-semibold">
+                      What makes this course different?
+                    </div>
+                    <ul className="mt-2 list-disc space-y-1 pl-5">
                       <li>We grade scientific reasoning and honesty, not code style.</li>
                       <li>We require explainability that leads to actions.</li>
-                      <li>Every team finishes with a poster and reusable research assets.</li>
+                      <li>
+                        Every team finishes with a poster and reusable research assets.
+                      </li>
                     </ul>
                   </div>
-                  <div className="mt-4 text-xs text-ink/60">
+
+                  <div className="text-xs text-ink/60">
                     Lab website:{" "}
-                    <a href="https://genius.ulsan.ac.kr/home" target="_blank" rel="noreferrer">
+                    <a
+                      href="https://genius.ulsan.ac.kr/home"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline hover:text-ink"
+                    >
                       genius.ulsan.ac.kr
                     </a>
                   </div>
@@ -121,38 +120,8 @@ export default function HomePage() {
               </CardBody>
             </Card>
           </div>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <Card className="md:col-span-2">
-              <CardHeader title="What you build" subtitle="Every team produces paper-ready artifacts." />
-              <CardBody>
-                <div className="grid gap-3 md:grid-cols-2">
-                  {[
-                    ["Dataset Card", "Provenance, units, missingness, drift, bias, limitations."],
-                    ["Baseline Ladder", "At least 3 baselines + honest error analysis."],
-                    ["Explainability Pack", "Global + local + failure modes + action recommendations."],
-                    ["Poster", "Mini-conference style: one message, three figures, limitations."],
-                  ].map(([t, d]) => (
-                    <div key={t} className="rounded-xl bg-paper p-4 ring-1 ring-black/5">
-                      <div className="font-bold">{t}</div>
-                      <div className="mt-1 text-sm text-ink/70">{d}</div>
-                    </div>
-                  ))}
-                </div>
-              </CardBody>
-            </Card>
-            <Card>
-              <CardHeader title="Start here" subtitle="Quick links" />
-              <CardBody className="space-y-2 text-sm">
-                <Link href="/case-files" className="block font-semibold no-underline">Case Files →</Link>
-                <Link href="/studio" className="block font-semibold no-underline">Weekly Missions →</Link>
-                <Link href="/scoreboard" className="block font-semibold no-underline">Trust Score →</Link>
-                <Link href="/poster-factory" className="block font-semibold no-underline">Poster Factory →</Link>
-              </CardBody>
-            </Card>
-          </div>
-        </div>
-      </Container>
+        </Container>
+      </section>
     </main>
   );
 }
