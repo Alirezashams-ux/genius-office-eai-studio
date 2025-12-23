@@ -1,4 +1,4 @@
-export function InstructorBlock() {
+﻿export function InstructorBlock() {
   return (
     <div className="flex items-center gap-4">
       <img
