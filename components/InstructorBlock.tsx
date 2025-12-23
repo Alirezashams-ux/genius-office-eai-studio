@@ -8,12 +8,13 @@ export function InstructorBlock() {
         alt="Prof. Kyung"
         width={72}
         height={72}
-        className="h-[72px] w-[72px] rounded-2xl object-cover ring-1 ring-black/10"
+        unoptimized
+        className="h-[72px] w-[72px] rounded-2xl object-cover ring-2 ring-slate-300 shadow-sm"
         priority
       />
       <div>
-        <div className="text-sm font-semibold text-ink">Prof. Kyung (GENIUS Lab)</div>
-        <div className="text-xs text-ink/70">
+        <div className="text-sm font-bold text-ink">Prof. Kyung (GENIUS Lab)</div>
+        <div className="mt-1 text-xs text-ink/70">
           Civil & Environmental Engineering · Ulsan University
         </div>
       </div>
