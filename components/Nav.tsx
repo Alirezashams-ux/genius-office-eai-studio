@@ -1,38 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-
-export default function Nav() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-white/90 p-1 ring-1 ring-white/15">
-            <Image
-              src="/genius_logo.png"
-              alt="GENIUS Lab"
-              width={40}
-              height={40}
-              className="h-full w-full object-contain"
-              priority
-            />
-          </div>
-
-          <div className="leading-tight">
-            <div className="text-sm font-semibold text-white">GENIUS Office</div>
-            <div className="text-xs text-white/70">Environmental AI Studio I</div>
-          </div>
-        </Link>
-
-        {/* keep your existing nav links here */}
-      </div>
-    </header>
-  );
-}
-
-
-
-
-import Link from "next/link";
 import Container from "./Container";
 import Badge from "./Badge";
 
@@ -47,23 +14,42 @@ const nav = [
 
 export default function Nav() {
   return (
-    <div className="sticky top-0 z-30 border-b border-black/5 bg-paper/90 backdrop-blur">
+    <div className="sticky top-0 z-30 border-b border-black/10 bg-paper/90 backdrop-blur">
       <Container>
         <div className="flex items-center justify-between py-3">
+          {/* Brand lockup */}
           <Link href="/" className="flex items-center gap-3 no-underline">
-            <div className="h-9 w-9 rounded-2xl bg-navy text-white grid place-items-center font-black">G</div>
+            <div className="h-10 w-10 rounded-2xl bg-white p-1 ring-1 ring-black/10">
+              <Image
+                src="/genius_logo.png"
+                alt="GENIUS Lab"
+                width={40}
+                height={40}
+                className="h-full w-full object-contain"
+                priority
+              />
+            </div>
+
             <div className="leading-tight">
               <div className="text-sm font-extrabold text-ink">GENIUS Office</div>
               <div className="text-xs text-ink/70">Environmental AI Studio I</div>
             </div>
           </Link>
-          <div className="hidden items-center gap-4 md:flex">
+
+          {/* Links */}
+          <nav className="hidden items-center gap-4 md:flex">
             {nav.map((n) => (
-              <Link key={n.href} href={n.href} className="text-sm text-ink/80 hover:text-ink no-underline">
+              <Link
+                key={n.href}
+                href={n.href}
+                className="text-sm text-ink/80 hover:text-ink no-underline"
+              >
                 {n.label}
               </Link>
             ))}
-          </div>
+          </nav>
+
+          {/* Badges */}
           <div className="flex items-center gap-2">
             <Badge tone="teal">NO EXAMS</Badge>
             <Badge tone="sky">EXPLAINABLE</Badge>
